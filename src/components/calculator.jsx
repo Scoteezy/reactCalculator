@@ -13,8 +13,10 @@ const Calculator = () => {
         }
        
         else if(e.target.value==='='){
-            if(inputValue.split('')[inputValue.length-1]!=='+' && inputValue.split('')[inputValue.length-1]!=='-' && inputValue.split('')[inputValue.length-1]!=='*' && inputValue.split('')[inputValue.length-1]!=='/'){
-
+            if(inputValue.split('')[inputValue.length-1]!=='+' && inputValue.split('')[inputValue.length-1]!=='-' && inputValue.split('')[inputValue.length-1]!=='*' && inputValue.split('')[inputValue.length-1]!=='/' && inputValue.split('')[inputValue.length-1]!=='.'){
+            if(inputValue.match(/([+=.-])\1/) ){
+                return;
+            }
             const res = Math.floor((eval(inputValue)*100)/100);
             setInputValue(String(res));
             }
